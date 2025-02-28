@@ -1,0 +1,15 @@
+
+file /gdbscript/vuln
+b *(main)
+b *delete+88
+commands
+    heap
+end
+b *add+17
+b *add+22
+commands
+    heap
+end
+b *main+392
+b *free+106
+#set pagination off

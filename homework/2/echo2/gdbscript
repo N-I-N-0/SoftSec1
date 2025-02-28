@@ -1,0 +1,5 @@
+
+file vuln
+b main
+b *(main+108)
+b exit

@@ -1,0 +1,8 @@
+
+file /gdbscript/rev
+#getline
+#b *$base("rev")+0x17cf
+#check input i
+b *$base("rev")+0x185d
+# inside check 2
+#b *$base("rev")+0x136e

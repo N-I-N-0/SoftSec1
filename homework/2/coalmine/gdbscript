@@ -1,0 +1,8 @@
+
+file vuln
+b *(main)
+#b *(main+498)
+#set detach-on-fork off
+#set follow-fork-mode child
+set follow-fork-mode parent
+#catch fork

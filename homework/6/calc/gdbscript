@@ -1,0 +1,6 @@
+
+file /gdbscript/vuln
+# memcpy
+#b win
+#b vuln.cpp:211
+#b *Calculator::rename_expr(std::basic_string_view<char, std::char_traits<char> >, std::basic_string_view<char, std::char_traits<char> >)+531

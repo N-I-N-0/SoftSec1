@@ -1,0 +1,4 @@
+
+file /gdbscript/vuln
+b *register_to_exam+137
+b *secret

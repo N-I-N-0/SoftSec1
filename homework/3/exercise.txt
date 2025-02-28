@@ -1,0 +1,4 @@
+# find got offsets
+# gdb got (but not within docker attach)
+# Ghidra
+readelf -a | less

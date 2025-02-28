@@ -1,0 +1,3 @@
+
+file /gdbscript/vuln
+b *read_input+36

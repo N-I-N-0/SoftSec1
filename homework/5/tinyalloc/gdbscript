@@ -1,0 +1,8 @@
+
+file /gdbscript/vuln
+b *read_index+55
+#b char_buffer_add_slow
+#command
+#heap
+#end
+#b allocate_chunk

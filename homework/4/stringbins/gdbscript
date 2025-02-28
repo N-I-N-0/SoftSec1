@@ -1,0 +1,6 @@
+
+file /gdbscript/vuln
+b *(main)
+#b *change+341
+b *change+387
+#set pagination off

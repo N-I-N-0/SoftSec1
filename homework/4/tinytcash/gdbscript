@@ -1,0 +1,23 @@
+
+file /gdbscript/vuln
+b *(main)
+#b *(phonebook_show+20)
+#b *(main+358)
+#b *create+32
+#b *create+55
+b *create+82
+b *create+88
+commands
+    heap
+end
+#b *create+106
+b *transfer+442
+commands
+    heap
+end
+#b *deposit+271
+b *log_event+81
+commands
+    heap
+end
+set pagination off

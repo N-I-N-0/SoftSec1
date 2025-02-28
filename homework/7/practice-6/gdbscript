@@ -1,0 +1,5 @@
+
+file /gdbscript/vuln
+b vuln.cpp:20
+b vuln.cpp:164
+b vuln.cpp:181

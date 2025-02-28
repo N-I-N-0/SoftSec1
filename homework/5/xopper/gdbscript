@@ -1,0 +1,3 @@
+
+file /gdbscript/vuln
+b *0x40122f

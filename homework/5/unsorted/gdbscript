@@ -1,0 +1,7 @@
+
+file /gdbscript/vuln
+#b *read_index+55
+#b *main+138
+#b _int_malloc:3902
+#b *_int_malloc+1071
+b *main+578

@@ -1,0 +1,4 @@
+
+file vuln
+#b *(main)
+b *(measure_power_level+48)

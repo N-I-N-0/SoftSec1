@@ -1,0 +1,4 @@
+
+file vuln
+b *(main)
+b *(main+193)

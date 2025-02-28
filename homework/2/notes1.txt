@@ -1,0 +1,3 @@
+use pointer on stack pointing onto other stack entry
+make this value point onto ret addr used by main function
+find rop gadget to change rsp to rdi so our rop chain continues from heap memory

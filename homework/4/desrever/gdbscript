@@ -1,0 +1,28 @@
+
+file /gdbscript/vuln
+#main:
+#b *$base("vuln")+0x1551
+#command
+#p "main"
+#end
+#submit:
+#b *$base("vuln")+0x1318
+#command
+#p "submit"
+#end
+#qsort call
+#b *$base("vuln")+0x13fa
+#command
+#p "qsort call"
+#end
+#view:
+#b *$base("vuln")+0x144f
+#command
+#p "view"
+#end
+#magic:
+b *$base("vuln")+0x1533
+command
+p "magic"
+end
+#set pagination off

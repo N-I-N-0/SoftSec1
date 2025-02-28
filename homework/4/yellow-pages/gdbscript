@@ -1,0 +1,5 @@
+
+file vuln
+b *(main)
+b *(phonebook_show+20)
+b *(main+358)

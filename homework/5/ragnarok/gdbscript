@@ -1,0 +1,7 @@
+
+file /gdbscript/vuln
+#b *rename_warrior+78
+#b *free
+#b *read_line+57
+#b *inspect_warrior+76
+b *_int_free+493

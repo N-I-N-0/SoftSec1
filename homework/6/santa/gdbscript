@@ -1,0 +1,10 @@
+
+file /gdbscript/vuln
+b main
+b make_festive
+#getline
+#b *$base("vuln")+0x17cf
+#check input i
+#b *$base("vuln")+0x185d
+# inside check 2
+#b *$base("vuln")+0x136e

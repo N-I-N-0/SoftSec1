@@ -1,0 +1,3 @@
+
+file shellcode-runner
+b *(main+386)
