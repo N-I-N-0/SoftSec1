@@ -1,0 +1,11 @@
+https://heap-exploitation.dhavalkapil.com/diving_into_glibc_heap/security_checks
+
+tcache double free: https://tc.gts3.org/cs6265/tut/tut09-02-advheap.html
+
+https://azeria-labs.com/heap-exploitation-part-2-glibc-heap-free-bins/
+Tcache: Each bin contains a maximum of 7 same-size chunks ranging from 24 to 1032 bytes on 64-bit systems and 12 to 516 bytes on 32-bit systems.
+
+
+
+
+https://x64.syscall.sh/

