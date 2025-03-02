@@ -44,6 +44,10 @@ def cyclic_find_bytes(b):
     return cyclic_find(to_be_found)
 
 
+# we can overwrite vtable ptr since read allows to read 8 bytes more than the size of the char array in front
+# win function referenced by another existing vtable, so we simply switch the vtable ptr to this vtable
+
+
 # SantaSpecialCookie vtable = 0x00403db0
 SantaSpecialCookie = 0x00403db0
 # Cookie vtable = 00403db8
